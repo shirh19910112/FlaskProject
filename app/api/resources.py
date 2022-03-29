@@ -11,7 +11,7 @@ from app import constants
 
 from .models import Wallet
 from .schemas import wallet_schema, wallets_schema
-
+from sqlalchemy.sql import text
 
 parser = reqparse.RequestParser()  # pylint: disable=invalid-name
 parser.add_argument('currency_code', type=str)
