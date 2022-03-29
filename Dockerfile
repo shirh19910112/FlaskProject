@@ -11,7 +11,7 @@ WORKDIR /flask_app
 ADD . /flask_app
 
 # install mysql-client
-RUN apt-get update && apt-get install --no-install-recommends -y mysql-client
+RUN apt-get update && apt-get install --no-install-recommends -y default-mysql-client
 
 # pip install the local requirements.txt
 RUN pip install -r requirements.txt
