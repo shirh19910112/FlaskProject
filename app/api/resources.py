@@ -33,12 +33,12 @@ class ApiResource(Resource):
 
         # return the last N operations for the given currency from the DB
         if currency_code and no_of_operations:
-            query = Wallet.query.filter_by(currency_code=currency_code).order_by('-created_on').limit(no_of_operations)  #pylint: disable=line-too-long
+            query = Wallet.query.filter_by(currency_code=currency_code).order_by(text('-created_on')).limit(no_of_operations)  #pylint: disable=line-too-long
             data = wallets_schema.dump(query).data
 
         # return the last record for the given currency from the DB
         elif currency_code:
-            query = Wallet.query.filter_by(currency_code=currency_code).order_by('-created_on').first()  #pylint: disable=line-too-long
+            query = Wallet.query.filter_by(currency_code=currency_code).order_by(text('-created_on')).first()  #pylint: disable=line-too-long
             data = wallet_schema.dump(query).data
 
         # return the last N operations from the DB
