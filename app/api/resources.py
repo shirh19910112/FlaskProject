@@ -43,12 +43,12 @@ class ApiResource(Resource):
 
         # return the last N operations from the DB
         elif no_of_operations:
-            query = Wallet.query.order_by('-id').limit(no_of_operations)
+            query = Wallet.query.order_by(text('-id')).limit(no_of_operations)
             data = wallets_schema.dump(query).data
 
         # return the last operation stored in DB
         else:
-            query = Wallet.query.order_by('-id').first()
+            query = Wallet.query.order_by(text('-id')).first()
             data = wallet_schema.dump(query).data
 
         if data:
